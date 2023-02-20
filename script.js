@@ -1,17 +1,18 @@
 const myLibrary = [];
 
-function Book(title, author, pages, details) {
+function Book(title, author, pages, details, completed) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.details = details;
-  // this.completed = false;
+  this.completed = completed;
 }
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+// loop myLibrary
 function displayBooks() {
   const container = document.querySelector('.book-container');
   container.innerHTML = ''; // prevent previous elements in library to duplicate.
@@ -34,13 +35,15 @@ function addNewBook(e) {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const details = document.getElementById('details').value;
+  const completed = false;
 
-  const book = new Book(title, author, pages, details);
+  const book = new Book(title, author, pages, details, completed);
   addBookToLibrary(book);
 
   displayBooks();
   form.style.display = 'none';
   form.reset();
+  console.log(myLibrary);
 }
 
 form.addEventListener('submit', addNewBook);

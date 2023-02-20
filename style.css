@@ -1,3 +1,41 @@
+*, 
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* blue-green */
+:root {
+  --text-main: white;
+  --text-sub: rgba(255, 255, 255, 0.7);
+  --background: #263238;
+  --num-container: #37474F;
+  --card-container: #546E7A;
+  --button-read: #AB9085;
+}
+
+/* brown */
+/* :root {
+  --text-main: white;
+  --text-sub: rgba(255, 255, 255, 0.7);
+  --background: #3E2723;
+  --num-container: #4E342E;
+  --card-container: #6D4C41;
+  --button-read: #76AD84;
+} */
+
+/* light-blue */
+/* :root {
+  --text-main: black;
+  --text-sub: rgba(0, 0, 0, 0.7);
+  --background: #B4D9DD;
+  --num-container: #9CBEC1;
+  --card-container: #E0F7FA;
+  --button-read: #365C4F;
+} */
+
 .book {
   width: 500px;
   /* height: 50px; */
