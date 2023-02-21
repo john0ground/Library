@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200;500;600&display=swap');
 
 *, 
 *::before,
@@ -46,28 +46,130 @@ body {
 header {
   min-width: 100%;
   height: 80px;
-  border: 1px solid #000;
   background-color: var(--num-container);
 }
 
 main {
   width: 900px;
-  border: 1px solid #000;
   margin: 0 auto;
 }
 
 .card {
-  height: 180px;
+  padding: 25px 0 25px 0;
   margin-top: 30px;
-  border: 1px solid #000;
   background-color: var(--card-container);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.read-state {
+  height: fit-content;
+  margin-left: 85px;
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  row-gap: 20px;
+  column-gap: 30px;
+  letter-spacing: 1px;
+}
+
+.read-state > p {
+  grid-row: 1 / 3;
+  color: var(--text-main);
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding-top: 0.7rem;
+}
+
+.num-container {
+  background: #37474F;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.num-container > p {
+  color: var(--text-sub);
+  height: 1.2rem;
+}
+
+.current-page {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.completed-btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  background: var(--button-read);
+  border: none;
+  color: var(--background);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .book {
-  width: 500px;
-  /* height: 50px; */
-  border: 1px solid #000;
-  margin-bottom: 20px;
+  margin-right: 70px;
+  display: flex;
+}
+
+.book-final-state {
+  display: none;
+}
+
+.book-img-container {
+  /* border: 1px solid #000; */
+  width: 130px;
+  height: 180px;
+  margin-right: 50px;
+}
+
+.book-img-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.book-details {
+  width: 250px;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: var(--text-main);
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.author {
+  color: var(--text-sub);
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+
+.info {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  height: 110px;
+  overflow-y: auto;
+}
+
+.info::-webkit-scrollbar {
+  width: 3px;
+  background-color: var(--button-read);
+}
+
+.info::-webkit-scrollbar-thumb {
+  background-color: var(--background);
+  border-radius: 10px;
 }
 
 #form {
