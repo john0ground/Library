@@ -175,3 +175,16 @@ main {
 #form {
   display: none;
 }
+
+.num-container:hover,
+.completed-btn:hover,
+.book-img-container:hover {
+  transform: translate(0px, 2px);
+  cursor: pointer;
+}
+
+.num-container,
+.completed-btn,
+.book-img-container {
+  transition: transform 0.2s;
+}
