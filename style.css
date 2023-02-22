@@ -223,6 +223,16 @@ main {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  animation: increase-scale 0.5s;
+}
+
+@keyframes increase-scale {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .form-row {
@@ -334,7 +344,7 @@ textarea::-webkit-scrollbar-thumb {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* display: none; */
+  display: none;
 }
 
 .num-container:hover,
