@@ -48,7 +48,10 @@ function addNewBook(e) {
 
 form.addEventListener('submit', addNewBook);
 
-const newBook = document.getElementById('new-book');
-newBook.addEventListener('click', () => {
-  form.style.display = 'block';
-});
+// open form
+const formModal = document.querySelector('#form-modal');
+const openForm = document.querySelector('#add-book-btn');
+
+// openForm.addEventListener('click', () => {
+//   formModal.style.display = 'block';
+// });

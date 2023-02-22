@@ -10,9 +10,8 @@
 </head>
 <body>
   <header></header>
-  <!-- <button id="new-book">New Book</button> -->
-  <main>
 
+  <main>
     <div class="card">
       <section class="read-state">
         <p>Page</p>
@@ -39,30 +38,37 @@
       <p>Add Book</p>
     </button>
   </main>
-  
-  <form action="" id="form">
-    <div class="form-row">
-      <label for="author">Author</label>
-      <input type="text" id="author" name="author">
-    </div>
-    
-    <div class="form-row">
-      <label for="">Title</label>
-      <input type="text" id="title" name="title">
-    </div>
-    
-    <div class="form-row">
-      <label for="pages">Pages</label>
-      <input type="number" id="pages" name="pages">
-    </div>
 
-    <div class="form-row">
-      <label for="details">Details</label>
-      <textarea name="details" id="details" cols="30" rows="10"></textarea>
-    </div>
-    
-    <button type="submit">Add Book</button>
-  </form>
+  <section id="form-modal">
+    <form action="" id="form">
+      <div class="form-row">
+        <label for=""></label>
+        <input type="text" id="title" name="title" placeholder="Title" required>
+      </div>
+  
+      <div class="form-row">
+        <label for="author"></label>
+        <input type="text" id="author" name="author" placeholder="Author" required> 
+      </div>
+      
+      <div class="form-row">
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" name="pages">
+      </div>
+  
+      <div class="form-row checkbox">
+        <label for="read">Read</label>
+        <input type="checkbox" id="read" name="read">
+      </div>
+  
+      <div class="form-row">
+        <label for="details">Details</label>
+        <textarea name="details" id="details" rows="8">N/A</textarea>
+      </div>
+      
+      <button type="submit" id="add-book-submit" class="add-book-submit">Add Book</button>
+    </form>
+  </section>
 
 </body>
 </html>

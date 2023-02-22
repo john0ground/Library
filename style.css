@@ -188,6 +188,7 @@ main {
   align-items: center;
   padding: 10px;
   box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.5);
+  outline: none;
 }
 
 .add-book-btn > div {
@@ -213,21 +214,142 @@ main {
   pointer-events: none;
 }
 
+/* ---FORM----------------------------------------------------------------------------------------------------- */
+
 #form {
-  display: none;
+  background: var(--card-container);
+  border: 5px solid var(--button-read);
+  max-width: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  margin: 30px 20px 0 20px;
+}
+
+input::placeholder {
+  color: var(--text-sub);
+  font-weight:lighter;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 30px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid var(--num-container);
+  outline: none;
+  padding-left: 3px;
+  color: var(--text-main);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: 'Overpass', sans-serif;
+}
+
+label {
+  color: var(--text-main);
+  font-weight: 200;
+}
+
+input[type="number"] {
+  width: 100px;
+  background: var(--num-container);
+  outline: none;
+  border: none;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 1rem;
+  color: var(--text-main)
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  border: 2px solid var(--num-container);
+  border-radius: 3px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--button-read);
+}
+
+.form-row:last-of-type {
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  outline: none;
+  background: none;
+  border: 2px solid var(--num-container);
+  padding: 10px;
+  font-size: 1rem;
+  font-family: 'Overpass', sans-serif;
+  color: var(--text-sub);
+  overflow-y: auto;
+  resize: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: 3px;
+  background-color: var(--button-read);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: var(--background);
+  border-radius: 10px;
+}
+
+.add-book-submit {
+  align-self: center;
+  background-color: var(--button-read);
+  border: none;
+  color: var(--background);
+  font-size: 1rem;
+  font-family: 'Overpass', sans-serif;
+  font-weight: bold;
+  padding: 5px 10px;
+  margin: 30px 0 20px 0;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#form-modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
 }
 
 .num-container:hover,
 .completed-btn:hover,
 .book-img-container:hover,
-.add-book-btn:hover {
-  transform: translate(0px, 2px);
+.add-book-btn:hover,
+.add-book-submit:hover {
+  transform: translate(0px, 1px);
   cursor: pointer;
 }
 
 .num-container,
 .completed-btn,
 .book-img-container,
-.add-book-btn {
+.add-book-btn,
+.add-book-submit {
   transition: transform 0.2s;
 }
