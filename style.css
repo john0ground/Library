@@ -219,7 +219,7 @@ main {
 #form {
   background: var(--card-container);
   border: 5px solid var(--button-read);
-  max-width: 300px;
+  max-width: 350px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;

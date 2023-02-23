@@ -12,21 +12,24 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-// loop myLibrary
+// loop myLibrary to display books.
 function displayBooks() {
-  const container = document.querySelector('.book-container');
-  container.innerHTML = ''; // prevent previous elements in library to duplicate.
+  const main = document.querySelector('main');
+  console.log(main.innerHTML);
+  main.innerHTML = ''; // prevent previous elements in library to duplicate.
 
   myLibrary.forEach((book) => {
-    const bookElement = document.createElement('div');
-    bookElement.setAttribute('class', 'book');
+    const bookContainer = document.createElement('div');
+    bookContainer.setAttribute('class', 'book');
 
-    bookElement.textContent = book.author;
-    container.appendChild(bookElement);
+    bookContainer.textContent = book.author;
+    main.appendChild(bookContainer);
   });
 }
 
+// form submission
 const form = document.getElementById('form');
+const formModal = document.querySelector('#form-modal');
 
 function addNewBook(e) {
   e.preventDefault(e); // prevent form from submitting
@@ -35,21 +38,20 @@ function addNewBook(e) {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const details = document.getElementById('details').value;
-  const completed = false;
+  const completed = document.getElementById('read').checked;
 
+  // add validated book
   const book = new Book(title, author, pages, details, completed);
   addBookToLibrary(book);
 
   displayBooks();
-  form.style.display = 'none';
+  formModal.style.display = 'none';
   form.reset();
-  console.log(myLibrary);
 }
 
 form.addEventListener('submit', addNewBook);
 
 // open form
-const formModal = document.querySelector('#form-modal');
 const openForm = document.querySelector('#add-book-btn');
 
 openForm.addEventListener('click', () => {
