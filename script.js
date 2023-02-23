@@ -15,7 +15,6 @@ function addBookToLibrary(book) {
 // loop myLibrary to display books.
 function displayBooks() {
   const main = document.querySelector('main');
-  console.log(main.innerHTML);
   main.innerHTML = ''; // prevent previous elements in library to duplicate.
 
   myLibrary.forEach((book) => {
@@ -37,8 +36,21 @@ function addNewBook(e) {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
-  const details = document.getElementById('details').value;
+  let details = document.getElementById('details').value;
   const completed = document.getElementById('read').checked;
+
+  // validate form
+  if (pages <= 0) {
+    const pageInput = document.querySelector('input[type="number"]');
+    const pageError = document.querySelector('.page-error');
+
+    pageInput.classList.add('input-error');
+    pageError.style.display = 'block';
+    return;
+  }
+  if (details === '') {
+    details = 'details: N/A';
+  }
 
   // add validated book
   const book = new Book(title, author, pages, details, completed);

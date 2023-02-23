@@ -219,7 +219,7 @@ main {
 #form {
   background: var(--card-container);
   border: 5px solid var(--button-read);
-  max-width: 350px;
+  max-width: 300px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -261,6 +261,22 @@ input[type="text"] {
 label {
   color: var(--text-main);
   font-weight: 200;
+  align-self: center;
+}
+
+.pages {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "name input"
+    ". error";
+  justify-items: left;
+  column-gap: 14px;
+  row-gap: 5px;
+}
+
+label[for="pages"] {
+  grid-area: name;
 }
 
 input[type="number"] {
@@ -268,11 +284,22 @@ input[type="number"] {
   background: var(--num-container);
   outline: none;
   border: none;
-  margin-left: 10px;
   padding: 5px;
   border-radius: 3px;
   font-size: 1rem;
-  color: var(--text-main)
+  color: var(--text-main);
+  grid-area: input;
+}
+
+.input-error {
+  border: 1px solid #c92432 !important; 
+}
+
+.page-error {
+  grid-area: error;
+  font-size: 0.85rem;
+  color: var(--background);
+  display: none;
 }
 
 .checkbox {
