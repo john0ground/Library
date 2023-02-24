@@ -145,32 +145,32 @@ main {
   width: 250px;
 }
 
-.title {
+.title-card {
   font-size: 1.4rem;
   color: var(--text-main);
   letter-spacing: 1px;
   margin-top: 10px;
 }
 
-.author {
+.author-card {
   color: var(--text-sub);
   margin-bottom: 15px;
   font-size: 0.9rem;
 }
 
-.info {
+.details-card {
   color: var(--text-sub);
   font-size: 0.9rem;
   height: 110px;
   overflow-y: auto;
 }
 
-.info::-webkit-scrollbar {
+.details-card::-webkit-scrollbar {
   width: 3px;
   background-color: var(--button-read);
 }
 
-.info::-webkit-scrollbar-thumb {
+.details-card::-webkit-scrollbar-thumb {
   background-color: var(--background);
   border-radius: 10px;
 }

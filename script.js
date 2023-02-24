@@ -18,11 +18,91 @@ function displayBooks() {
   main.innerHTML = ''; // prevent previous elements in library to duplicate.
 
   myLibrary.forEach((book) => {
-    const bookContainer = document.createElement('div');
-    bookContainer.setAttribute('class', 'book');
+    //  card
+    const containerCard = document.createElement('div');
+    containerCard.setAttribute('class', 'card');
 
-    bookContainer.textContent = book.author;
-    main.appendChild(bookContainer);
+    //  read-state and book section
+    const readStateSection = document.createElement('section');
+    const bookSection = document.createElement('section');
+    readStateSection.setAttribute('class', 'read-state');
+    bookSection.setAttribute('class', book);
+
+    //  --------read-state section children-----------
+    const pagePara = document.createElement('p');
+    pagePara.textContent = 'Page';
+
+    const numContainer = document.createElement('div');
+    numContainer.setAttribute('class', 'num-container');
+
+    // currentPage
+    const currentPagePara = document.createElement('p');
+
+    const currentPage = document.createElement('span');
+    currentPage.setAttribute('class', 'current-page');
+    currentPage.setAttribute('id', 'current-page');
+
+    const totalPage = document.createElement('span');
+    totalPage.setAttribute('id', 'pages-card');
+
+    currentPagePara.appendChild(currentPage);
+    currentPagePara.appendChild(totalPage);
+
+    // read-complete button
+    const readBtn = document.createElement('button');
+    readBtn.setAttribute('id', 'completed-btn');
+    readBtn.setAttribute('class', 'completed-btn');
+    readBtn.textContent = 'Completed';
+
+    //  append read-state children
+    readStateSection.appendChild(pagePara);
+    readStateSection.appendChild(numContainer);
+    readStateSection.appendChild(readBtn);
+
+    // ------------book section children--------------
+    const bookImageContainer = document.createElement('div');
+    bookImageContainer.setAttribute('class', 'book-img-container');
+
+    const finalStatePara = document.createElement('p');
+    finalStatePara.setAttribute('id', 'book-final-state');
+    finalStatePara.setAttribute('class', 'book-final-state');
+    finalStatePara.textContent = 'Ongoing';
+
+    const bookImage = document.createElement('img');
+    bookImage.setAttribute('src', 'images/1.jpg');
+    bookImage.setAttribute('alt', 'book-template-cover');
+
+    bookImageContainer.appendChild(finalStatePara);
+    bookImageContainer.appendChild(bookImage);
+
+    //  book details
+    const bookDetails = document.createElement('div');
+    bookDetails.setAttribute('class', 'book-details');
+
+    const titlePara = document.createElement('p');
+    titlePara.setAttribute('id', 'title-card');
+    titlePara.setAttribute('class', 'title-card');
+
+    const authorPara = document.createElement('p');
+    authorPara.setAttribute('id', 'author-card');
+    authorPara.setAttribute('class', 'author-card');
+
+    const detailsPara = document.createElement('p');
+    detailsPara.setAttribute('id', 'details-card');
+    detailsPara.setAttribute('class', 'details-card');
+
+    bookDetails.appendChild(titlePara);
+    bookDetails.appendChild(authorPara);
+    bookDetails.appendChild(detailsPara);
+
+    // append book section children
+    bookSection.appendChild(bookImageContainer);
+    bookSection.appendChild(bookDetails);
+
+    //  append card children
+    containerCard.appendChild(readStateSection);
+    containerCard.appendChild(bookSection);
+    main.appendChild(containerCard);
   });
 }
 
@@ -59,6 +139,7 @@ function addNewBook(e) {
   displayBooks();
   formModal.style.display = 'none';
   form.reset();
+  console.log(myLibrary);
 }
 
 form.addEventListener('submit', addNewBook);
@@ -69,3 +150,8 @@ const openForm = document.querySelector('#add-book-btn');
 openForm.addEventListener('click', () => {
   formModal.style.display = 'flex';
 });
+
+// TO DO
+// Create card after submit
+// Create data attribute for every card
+// Store 2 initial cards in Library Array
