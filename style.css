@@ -124,14 +124,18 @@ main {
 }
 
 .book-final-state {
-  display: none;
+  color: #AB9085;
+  font-weight: 600;
+  position: absolute;
+  top: -23px; 
 }
 
 .book-img-container {
-  /* border: 1px solid #000; */
   width: 130px;
   height: 180px;
   margin-right: 50px;
+  position: relative;
+  margin-top: 5px;
 }
 
 .book-img-container > img {
