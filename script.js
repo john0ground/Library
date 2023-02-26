@@ -67,9 +67,7 @@ function displayBooks() {
     const readBtn = document.createElement('button');
     readBtn.setAttribute('id', 'completed-btn');
     readBtn.setAttribute('class', 'completed-btn');
-    readBtn.textContent = 'Completed';
-    currentBook.completed = 'Completed';
-    readBtn.textContent = currentBook.isRead();
+    readBtn.textContent = currentBook.completed;
 
     //  append read-state children
     readStateSection.appendChild(pagePara);
@@ -137,7 +135,7 @@ function addNewBook(e) {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   let details = document.getElementById('details').value;
-  const completed = document.getElementById('read').checked;
+  let completed = document.getElementById('read').checked;
 
   // validate form
   if (pages <= 0) {
@@ -150,6 +148,11 @@ function addNewBook(e) {
   }
   if (details === '') {
     details = 'details: N/A';
+  }
+  if (completed) {
+    completed = 'Re-read';
+  } else {
+    completed = 'Completed';
   }
 
   // add validated book
@@ -171,7 +174,6 @@ openForm.addEventListener('click', () => {
 });
 
 // TO DO
-// Create card after submit CHECKED
-// Store textContent from the currentBook object
+
 // Create data attribute for every card for editing
 // Store 2 initial cards in Library Array
