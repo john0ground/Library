@@ -17,6 +17,8 @@ Book.prototype.isRead = function () {
   return this.completed;
 };
 
+Book.prototype.currentPage = '0 / ';
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
@@ -53,7 +55,7 @@ function displayBooks() {
     const currentPage = document.createElement('span');
     currentPage.setAttribute('class', 'current-page');
     currentPage.setAttribute('id', 'current-page');
-    currentPage.textContent = '0 / ';
+    currentPage.textContent = currentBook.currentPage;
 
     const totalPage = document.createElement('span');
     totalPage.setAttribute('id', 'pages-card');
