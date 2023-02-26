@@ -19,6 +19,12 @@ Book.prototype.isRead = function () {
 
 Book.prototype.currentPage = '0 / ';
 
+Book.prototype.bookFinalState = function () {
+  if (this.completed === 'Completed') {
+    return 'Ongoing';
+  } return 'Completed';
+};
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
@@ -84,7 +90,7 @@ function displayBooks() {
     const finalStatePara = document.createElement('p');
     finalStatePara.setAttribute('id', 'book-final-state');
     finalStatePara.setAttribute('class', 'book-final-state');
-    finalStatePara.textContent = 'Ongoing';
+    finalStatePara.textContent = currentBook.bookFinalState();
 
     const bookImage = document.createElement('img');
     bookImage.setAttribute('src', 'images/1.jpg');
