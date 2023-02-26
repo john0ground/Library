@@ -185,7 +185,7 @@ main {
   background: var(--card-container);
   border: none;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 30px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;

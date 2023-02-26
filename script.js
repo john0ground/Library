@@ -27,10 +27,11 @@ function addBookToLibrary(book) {
 function displayBooks() {
   const main = document.querySelector('main');
   main.innerHTML = ''; // prevent previous elements in library to duplicate.
+  let currentIndex = -1;
 
   myLibrary.forEach(() => {
-    const currentBook = myLibrary[myLibrary.length - 1];
-    console.log(currentBook);
+    currentIndex += 1;
+    const currentBook = myLibrary[currentIndex];
 
     //  card
     const containerCard = document.createElement('div');
