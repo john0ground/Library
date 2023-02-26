@@ -8,16 +8,22 @@ function Book(title, author, pages, details, completed) {
   this.completed = completed;
 }
 
+Book.prototype.currentPage = '0 / ';
+
 Book.prototype.isRead = function () {
   if (this.completed === 'Completed') {
-    this.completed = 'Re - read';
+    this.completed = 'Re-read';
   } else {
     this.completed = 'Completed';
   }
   return this.completed;
 };
 
-Book.prototype.currentPage = '0 / ';
+Book.prototype.changeCurrentPage = function () {
+  if (this.completed === 'Re-read') {
+    this.currentPage = `${this.pages} / `;
+  } return this.currentPage;
+};
 
 Book.prototype.bookFinalState = function () {
   if (this.completed === 'Completed') {
@@ -62,7 +68,7 @@ function displayBooks() {
     const currentPage = document.createElement('span');
     currentPage.setAttribute('class', 'current-page');
     currentPage.setAttribute('id', 'current-page');
-    currentPage.textContent = currentBook.currentPage;
+    currentPage.textContent = currentBook.changeCurrentPage();
 
     const totalPage = document.createElement('span');
     totalPage.setAttribute('id', 'pages-card');
