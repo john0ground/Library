@@ -229,6 +229,7 @@ main {
   display: flex;
   flex-direction: column;
   animation: increase-scale 0.5s;
+  position: relative;
 }
 
 @keyframes increase-scale {
@@ -238,6 +239,12 @@ main {
   to {
     transform: scale(1);
   }
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .form-row {
@@ -408,7 +415,8 @@ textarea::-webkit-scrollbar-thumb {
 .add-book-btn:hover,
 .add-book-submit:hover,
 .edit-btn:hover,
-.delete-btn:hover {
+.delete-btn:hover,
+.close:hover {
   transform: translate(0px, 1px);
   cursor: pointer;
 }
@@ -419,6 +427,7 @@ textarea::-webkit-scrollbar-thumb {
 .add-book-btn,
 .add-book-submit,
 .edit-btn,
-.delete-btn {
+.delete-btn,
+.close {
   transition: transform 0.2s;
 }

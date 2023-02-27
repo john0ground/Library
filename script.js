@@ -204,9 +204,14 @@ form.addEventListener('submit', addNewBook);
 
 // open form
 const openForm = document.querySelector('#add-book-btn');
-
 openForm.addEventListener('click', () => {
   formModal.style.display = 'flex';
+});
+
+// close form
+const closeForm = document.querySelector('.close');
+closeForm.addEventListener('click', () => {
+  formModal.style.display = 'none';
 });
 
 // TO DO
