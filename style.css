@@ -65,6 +65,7 @@ main {
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
+  position: relative;
 }
 
 .read-state {
@@ -86,7 +87,7 @@ main {
 }
 
 .num-container {
-  background: #37474F;
+  background: var(--num-container);
   font-size: 1.2rem;
   width: 100%;
   padding: 0.7rem;
@@ -378,11 +379,36 @@ textarea::-webkit-scrollbar-thumb {
   display: none;
 }
 
+.icon-container {
+  display: inline-flex;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.delete-btn,
+.edit-btn {
+  background: var(--num-container);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.edit-btn {
+  margin-right: 10px;
+}
+
 .num-container:hover,
 .completed-btn:hover,
 .book-img-container:hover,
 .add-book-btn:hover,
-.add-book-submit:hover {
+.add-book-submit:hover,
+.edit-btn:hover,
+.delete-btn:hover {
   transform: translate(0px, 1px);
   cursor: pointer;
 }
@@ -391,6 +417,8 @@ textarea::-webkit-scrollbar-thumb {
 .completed-btn,
 .book-img-container,
 .add-book-btn,
-.add-book-submit {
+.add-book-submit,
+.edit-btn,
+.delete-btn {
   transition: transform 0.2s;
 }
