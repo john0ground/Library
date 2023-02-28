@@ -31,11 +31,16 @@ Book.prototype.bookFinalState = function () {
   } return 'Completed';
 };
 
+let selectedIndex; // set to global for access to functions responsible for editing books.
+let formMode; // set to global for access whether form is for adding book or editing.
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-let selectedIndex; // set to global for access to functions responsible for editing books.
+function modifiedBookToLibrary(book) {
+  myLibrary.splice(selectedIndex, 1, book);
+}
 
 // loop myLibrary to display books.
 function displayBooks() {
@@ -195,7 +200,11 @@ function addNewBook(e) {
 
   // add validated book
   const book = new Book(title, author, pages, details, completed);
-  addBookToLibrary(book);
+
+  // add new book or edit
+  if (formMode === 'add') {
+    addBookToLibrary(book);
+  } else { modifiedBookToLibrary(book); }
 
   displayBooks();
   formModal.style.display = 'none';
@@ -204,6 +213,7 @@ function addNewBook(e) {
   // assign eventListener to icons after every newly created book
   const editBtn = document.querySelectorAll('#edit-btn');
   editBtn.forEach((btn) => {
+    formMode = 'edit';
     btn.addEventListener('click', openFormEdit);
   });
 }
@@ -213,6 +223,7 @@ form.addEventListener('submit', addNewBook);
 // open form
 const openForm = document.querySelector('#add-book-btn');
 openForm.addEventListener('click', () => {
+  formMode = 'add';
   formModal.style.display = 'flex';
 });
 
@@ -229,9 +240,24 @@ function openFormEdit(e) {
   const titleInput = document.getElementById('title');
   titleInput.setAttribute('value', myLibrary[selectedIndex].title);
 
+  const authorInput = document.getElementById('author');
+  authorInput.setAttribute('value', myLibrary[selectedIndex].author);
+
+  const pagesInput = document.getElementById('pages');
+  pagesInput.setAttribute('value', myLibrary[selectedIndex].pages);
+
+  const completedInput = document.getElementById('read');
+  if (myLibrary[selectedIndex].completed === 'Completed') {
+    completedInput.checked = false;
+  } else { completedInput.checked = true; }
+
+  const detailsTextArea = document.getElementById('details');
+  detailsTextArea.textContent = myLibrary[selectedIndex].details;
+
   formModal.style.display = 'flex';
 }
 
 // TO DO
 // Create data attribute for every functionality in card and program one by one
+// insert edited form to addNewBook()
 // Store 2 initial cards in Library Array
