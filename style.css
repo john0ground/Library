@@ -405,6 +405,11 @@ textarea::-webkit-scrollbar-thumb {
   border: none;
 }
 
+.delete-btn *,
+.edit-btn * {
+  pointer-events: none;
+}
+
 .edit-btn {
   margin-right: 10px;
 }

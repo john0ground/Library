@@ -35,6 +35,8 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+let selectedIndex; // set to global for access to functions responsible for editing books.
+
 // loop myLibrary to display books.
 function displayBooks() {
   const main = document.querySelector('main');
@@ -141,10 +143,10 @@ function displayBooks() {
     //  icons
     const rewriteIcons = `
     <div class="icon-container">
-        <button class="edit-btn">
+        <button class="edit-btn" id="edit-btn" data-index="${currentIndex}">
           <svg class="edit" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path    fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="var(--text-sub)"/></svg>
         </button>
-        <button class="delete-btn">
+        <button class="delete-btn" id="delete-btn" data-index="${currentIndex}">
           <svg class="delete" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 12V17" stroke="var(--text-sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M14 12V17" stroke="var(--text-sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -198,6 +200,12 @@ function addNewBook(e) {
   displayBooks();
   formModal.style.display = 'none';
   form.reset();
+
+  // assign eventListener to icons after every newly created book
+  const editBtn = document.querySelectorAll('#edit-btn');
+  editBtn.forEach((btn) => {
+    btn.addEventListener('click', openFormEdit);
+  });
 }
 
 form.addEventListener('submit', addNewBook);
@@ -214,8 +222,16 @@ closeForm.addEventListener('click', () => {
   formModal.style.display = 'none';
 });
 
-// TO DO
+//  open form with values, edit book
+function openFormEdit(e) {
+  selectedIndex = e.target.dataset.index;
 
-// Create data attribute for every card for editing
-// edit a specific card and re-display / re - loop
+  const titleInput = document.getElementById('title');
+  titleInput.setAttribute('value', myLibrary[selectedIndex].title);
+
+  formModal.style.display = 'flex';
+}
+
+// TO DO
+// Create data attribute for every functionality in card and program one by one
 // Store 2 initial cards in Library Array
