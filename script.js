@@ -165,6 +165,23 @@ function displayBooks() {
   `;
 
     containerCard.innerHTML += rewriteIcons;
+
+    // assign eventListener to buttons after every newly created book
+    const editBtn = document.querySelectorAll('#edit-btn');
+    editBtn.forEach((btn) => {
+      formMode = 'edit';
+      btn.addEventListener('click', openFormEdit);
+    });
+
+    const deleteBtn = document.querySelectorAll('#delete-btn');
+    deleteBtn.forEach((btn) => {
+      btn.addEventListener('click', deleteBook);
+    });
+
+    const pageNum = document.querySelectorAll('.num-container');
+    pageNum.forEach((btn) => {
+      btn.addEventListener('click', editCurrentPage);
+    });
   });
 }
 
@@ -210,23 +227,6 @@ function addNewBook(e) {
   displayBooks();
   formModal.style.display = 'none';
   form.reset();
-
-  // assign eventListener to buttons after every newly created book
-  const editBtn = document.querySelectorAll('#edit-btn');
-  editBtn.forEach((btn) => {
-    formMode = 'edit';
-    btn.addEventListener('click', openFormEdit);
-  });
-
-  const deleteBtn = document.querySelectorAll('#delete-btn');
-  deleteBtn.forEach((btn) => {
-    btn.addEventListener('click', deleteBook);
-  });
-
-  const pageNum = document.querySelectorAll('.num-container');
-  pageNum.forEach((btn) => {
-    btn.addEventListener('click', editCurrentPage);
-  });
 }
 
 form.addEventListener('submit', addNewBook);
