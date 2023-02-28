@@ -69,6 +69,7 @@ function displayBooks() {
 
     const numContainer = document.createElement('div');
     numContainer.setAttribute('class', 'num-container');
+    numContainer.setAttribute('data-index', `${currentIndex}`);
 
     // currentPage
     const currentPagePara = document.createElement('p');
@@ -210,7 +211,7 @@ function addNewBook(e) {
   formModal.style.display = 'none';
   form.reset();
 
-  // assign eventListener to icons after every newly created book
+  // assign eventListener to buttons after every newly created book
   const editBtn = document.querySelectorAll('#edit-btn');
   editBtn.forEach((btn) => {
     formMode = 'edit';
@@ -220,6 +221,11 @@ function addNewBook(e) {
   const deleteBtn = document.querySelectorAll('#delete-btn');
   deleteBtn.forEach((btn) => {
     btn.addEventListener('click', deleteBook);
+  });
+
+  const pageNum = document.querySelectorAll('.num-container');
+  pageNum.forEach((btn) => {
+    btn.addEventListener('click', editCurrentPage);
   });
 }
 
@@ -268,6 +274,12 @@ function deleteBook(e) {
 
   myLibrary.splice(selectedIndex, 1);
   displayBooks();
+}
+
+//  edit current page
+function editCurrentPage(e) {
+  selectedIndex = e.target.dataset.index;
+  console.log(selectedIndex);
 }
 
 // TO DO

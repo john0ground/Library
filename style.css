@@ -103,6 +103,10 @@ main {
   height: 1.2rem;
 }
 
+.num-container * {
+  pointer-events: none;
+}
+
 .current-page {
   color: var(--text-main);
   font-weight: 600;
