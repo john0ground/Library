@@ -216,6 +216,11 @@ function addNewBook(e) {
     formMode = 'edit';
     btn.addEventListener('click', openFormEdit);
   });
+
+  const deleteBtn = document.querySelectorAll('#delete-btn');
+  deleteBtn.forEach((btn) => {
+    btn.addEventListener('click', deleteBook);
+  });
 }
 
 form.addEventListener('submit', addNewBook);
@@ -255,6 +260,14 @@ function openFormEdit(e) {
   detailsTextArea.textContent = myLibrary[selectedIndex].details;
 
   formModal.style.display = 'flex';
+}
+
+//  delete book
+function deleteBook(e) {
+  selectedIndex = e.target.dataset.index;
+
+  myLibrary.splice(selectedIndex, 1);
+  displayBooks();
 }
 
 // TO DO
