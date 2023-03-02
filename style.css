@@ -426,7 +426,7 @@ textarea::-webkit-scrollbar-thumb {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -439,6 +439,8 @@ textarea::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: increase-scale 0.5s;
+  position: relative;
 }
 
 .edit-page-container {
@@ -476,6 +478,12 @@ textarea::-webkit-scrollbar-thumb {
   box-shadow: 2px 2px 5px rgb(0 0 0 / 50%);
 }
 
+.edit-page-close {
+  position: absolute;
+  top: -25px;
+  right: -25px;
+}
+
 .num-container:hover,
 .completed-btn:hover,
 .book-img-container:hover,
@@ -484,7 +492,8 @@ textarea::-webkit-scrollbar-thumb {
 .edit-btn:hover,
 .delete-btn:hover,
 .close:hover,
-#edit-page-save {
+#edit-page-save,
+.edit-page-close {
   transform: translate(0px, 1px);
   cursor: pointer;
 }

@@ -277,10 +277,46 @@ function deleteBook(e) {
 }
 
 //  edit current page
+const pageModal = document.querySelector('#page-modal');
 function editCurrentPage(e) {
   selectedIndex = e.target.dataset.index;
-  console.log(selectedIndex);
+  const modalTotalPage = document.querySelector('.modal-page-total');
+
+  pageModal.style.display = 'flex';
+  modalTotalPage.textContent = ` / ${myLibrary[selectedIndex].pages}`;
 }
+
+//  close currentPage modal
+const closePageModal = document.querySelector('.edit-page-close');
+closePageModal.addEventListener('click', () => {
+  pageModal.style.display = 'none';
+});
+
+//  current page validation
+const currentPageEdit = document.querySelector('.edit-current-page');
+currentPageEdit.addEventListener('input', () => {
+  const current = parseInt(currentPageEdit.value, 10);
+  const total = parseInt(myLibrary[selectedIndex].pages, 10);
+
+  if (current > total) {
+    currentPageEdit.value = total;
+  } else if (current < 0) {
+    currentPageEdit.value = 0;
+  }
+});
+
+//  current page save
+const editPageSave = document.querySelector('#edit-page-save');
+editPageSave.addEventListener('click', () => {
+  myLibrary[selectedIndex].currentPage = `${currentPageEdit.value} / `;
+
+  if (currentPageEdit.value === '') {
+    myLibrary[selectedIndex].currentPage = '0 / ';
+  }
+
+  displayBooks();
+  pageModal.style.display = 'none';
+});
 
 // TO DO
 // Create data attribute for every functionality in card and program one by one
