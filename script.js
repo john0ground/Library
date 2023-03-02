@@ -91,6 +91,7 @@ function displayBooks() {
     const readBtn = document.createElement('button');
     readBtn.setAttribute('id', 'completed-btn');
     readBtn.setAttribute('class', 'completed-btn');
+    readBtn.setAttribute('data-index', `${currentIndex}`);
     readBtn.textContent = currentBook.completed;
 
     //  append read-state children
@@ -181,6 +182,11 @@ function displayBooks() {
     const pageNum = document.querySelectorAll('.num-container');
     pageNum.forEach((btn) => {
       btn.addEventListener('click', editCurrentPage);
+    });
+
+    const completedBtn = document.querySelectorAll('.completed-btn');
+    completedBtn.forEach((btn) => {
+      btn.addEventListener('click', changeBookState);
     });
   });
 }
@@ -282,6 +288,10 @@ function editCurrentPage(e) {
   selectedIndex = e.target.dataset.index;
   const modalTotalPage = document.querySelector('.modal-page-total');
 
+  if (myLibrary[selectedIndex].completed === 'Re-read') {
+    return false;
+  }
+
   pageModal.style.display = 'flex';
   modalTotalPage.textContent = ` / ${myLibrary[selectedIndex].pages}`;
 }
@@ -317,6 +327,20 @@ editPageSave.addEventListener('click', () => {
   displayBooks();
   pageModal.style.display = 'none';
 });
+
+//  change book state, complete/ongoing
+function changeBookState(e) {
+  selectedIndex = e.target.dataset.index;
+  // console.log(myLibrary[selectedIndex].completed);
+  if (myLibrary[selectedIndex].completed === 'Completed') {
+    myLibrary[selectedIndex].completed = 'Re-read';
+  } else {
+    myLibrary[selectedIndex].completed = 'Completed';
+    myLibrary[selectedIndex].currentPage = '0 / ';
+  }
+
+  displayBooks();
+}
 
 // TO DO
 // Create data attribute for every functionality in card and program one by one
