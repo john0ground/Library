@@ -31,6 +31,8 @@ Book.prototype.bookFinalState = function () {
   } return 'Completed';
 };
 
+Book.prototype.bookCoverTemplate = 'images/4.jpg';
+
 let selectedIndex; // set to global for access to functions responsible for editing books.
 let formMode; // set to global for access whether form is for adding book or editing.
 
@@ -113,8 +115,9 @@ function displayBooks() {
     finalStatePara.textContent = currentBook.bookFinalState();
 
     const bookImage = document.createElement('img');
-    bookImage.setAttribute('src', 'images/1.jpg');
+    bookImage.setAttribute('src', `${currentBook.bookCoverTemplate}`);
     bookImage.setAttribute('alt', 'book-template-cover');
+    bookImage.setAttribute('data-index', `${currentIndex}`);
 
     bookImageContainer.appendChild(finalStatePara);
     bookImageContainer.appendChild(bookImage);
@@ -191,6 +194,11 @@ function displayBooks() {
     const completedBtn = document.querySelectorAll('.completed-btn');
     completedBtn.forEach((btn) => {
       btn.addEventListener('click', changeBookState);
+    });
+
+    const bookTemplate = document.querySelectorAll('.book-img-container');
+    bookTemplate.forEach((template) => {
+      template.addEventListener('click', openBookTemplates);
     });
   });
 }
@@ -388,7 +396,33 @@ themes.forEach((theme) => {
   });
 });
 
+//  open book images modal
+const imagesModal = document.getElementById('images-modal');
+function openBookTemplates(e) {
+  imagesModal.style.display = 'flex';
+  selectedIndex = e.target.dataset.index;
+}
+
+//  close book images modal
+const closeImagesModal = document.getElementById('images-modal-close');
+closeImagesModal.addEventListener('click', () => {
+  imagesModal.style.display = 'none';
+});
+
+//  replace book template img
+function replaceBookTemplate(e) {
+  const selectedTemplate = e.target.dataset.imageTemplate;
+  myLibrary[selectedIndex].bookCoverTemplate = `images/${selectedTemplate}.jpg`;
+  displayBooks();
+  imagesModal.style.display = 'none';
+  console.log(selectedTemplate);
+}
+
+const bookTemplates = document.querySelectorAll('.img-modal-container');
+bookTemplates.forEach((template) => {
+  template.addEventListener('click', replaceBookTemplate);
+});
+
 // TO DO
-// template images
 // Store 2 initial cards in Library Array
 // logo
