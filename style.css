@@ -18,26 +18,6 @@
   --button-read: #AB9085;
 }
 
-/* brown */
-/* :root {
-  --text-main: white;
-  --text-sub: rgba(255, 255, 255, 0.7);
-  --background: #3E2723;
-  --num-container: #4E342E;
-  --card-container: #6D4C41;
-  --button-read: #76AD84;
-} */
-
-/* light-blue */
-/* :root {
-  --text-main: black;
-  --text-sub: rgba(0, 0, 0, 0.7);
-  --background: #B4D9DD;
-  --num-container: #9CBEC1;
-  --card-container: #E0F7FA;
-  --button-read: #365C4F;
-} */
-
 body {
   background: var(--background);
   font-family: 'Overpass', sans-serif;
@@ -137,7 +117,7 @@ main {
 }
 
 .book-final-state {
-  color: #AB9085;
+  color: var(--button-read);
   font-weight: 600;
   position: absolute;
   top: -23px; 
@@ -256,7 +236,7 @@ main {
 
 #form {
   background: var(--card-container);
-  border: 5px solid var(--button-read);
+  border: 3px solid var(--button-read);
   max-width: 300px;
   border-radius: 10px;
   display: flex;

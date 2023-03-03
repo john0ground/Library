@@ -346,8 +346,49 @@ function changeBookState(e) {
   displayBooks();
 }
 
+//  change theme
+function changeTheme(color) {
+  const root = document.documentElement;
+
+  if (color === 'grayish-blue') {
+    root.style.setProperty('--text-main', 'white');
+    root.style.setProperty('--text-sub', 'rgba(255, 255, 255, 0.7)');
+    root.style.setProperty('--background', '#263238');
+    root.style.setProperty('--num-container', '#37474F');
+    root.style.setProperty('--card-container', '#546E7A');
+    root.style.setProperty('--button-read', '#AB9085');
+  } else if (color === 'brown') {
+    root.style.setProperty('--text-main', 'white');
+    root.style.setProperty('--text-sub', 'rgba(255, 255, 255, 0.7)');
+    root.style.setProperty('--background', '#352420');
+    root.style.setProperty('--num-container', '#4E342E');
+    root.style.setProperty('--card-container', '#6D4C41');
+    root.style.setProperty('--button-read', '#76AD84');
+  } else if (color === 'light-blue') {
+    root.style.setProperty('--text-main', 'black');
+    root.style.setProperty('--text-sub', 'rgba(0, 0, 0, 0.7)');
+    root.style.setProperty('--background', '#8eb6b9');
+    root.style.setProperty('--num-container', '#9abfc3');
+    root.style.setProperty('--card-container', '#E0F7FA');
+    root.style.setProperty('--button-read', '#365C4F');
+  }
+}
+
+const themes = document.querySelectorAll('.theme');
+
+themes.forEach((theme) => {
+  theme.addEventListener('click', () => {
+    if (theme.id === 'brown') {
+      changeTheme('brown');
+    } else if (theme.id === 'grayish-blue') {
+      changeTheme('grayish-blue');
+    } else if (theme.id === 'light-blue') {
+      changeTheme('light-blue');
+    }
+  });
+});
+
 // TO DO
-// color palette
 // template images
 // Store 2 initial cards in Library Array
 // logo
