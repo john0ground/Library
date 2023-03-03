@@ -57,6 +57,10 @@ function displayBooks() {
     containerCard.setAttribute('class', 'card');
     containerCard.setAttribute('data-index', `${currentIndex}`);
 
+    if (currentBook.completed === 'Re-read') {
+      containerCard.classList.toggle('card-complete');
+    }
+
     //  read-state and book section
     const readStateSection = document.createElement('section');
     const bookSection = document.createElement('section');
@@ -232,7 +236,6 @@ function addNewBook(e) {
 
   displayBooks();
   formModal.style.display = 'none';
-  form.reset();
 }
 
 form.addEventListener('submit', addNewBook);
@@ -242,6 +245,7 @@ const openForm = document.querySelector('#add-book-btn');
 openForm.addEventListener('click', () => {
   formMode = 'add';
   formModal.style.display = 'flex';
+  form.reset();
 });
 
 // close form
@@ -255,13 +259,13 @@ function openFormEdit(e) {
   selectedIndex = e.target.dataset.index;
 
   const titleInput = document.getElementById('title');
-  titleInput.setAttribute('value', myLibrary[selectedIndex].title);
+  titleInput.value = myLibrary[selectedIndex].title;
 
   const authorInput = document.getElementById('author');
-  authorInput.setAttribute('value', myLibrary[selectedIndex].author);
+  authorInput.value = myLibrary[selectedIndex].author;
 
   const pagesInput = document.getElementById('pages');
-  pagesInput.setAttribute('value', myLibrary[selectedIndex].pages);
+  pagesInput.value = myLibrary[selectedIndex].pages;
 
   const completedInput = document.getElementById('read');
   if (myLibrary[selectedIndex].completed === 'Completed') {
@@ -343,6 +347,8 @@ function changeBookState(e) {
 }
 
 // TO DO
-// Create data attribute for every functionality in card and program one by one
-// insert edited form to addNewBook()
+// Border for complete
+// color palette
+// template images
 // Store 2 initial cards in Library Array
+// logo

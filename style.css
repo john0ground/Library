@@ -68,6 +68,10 @@ main {
   position: relative;
 }
 
+.card-complete {
+  border-left: 10px solid var(--button-read);
+}
+
 .read-state {
   height: fit-content;
   margin-left: 85px;
