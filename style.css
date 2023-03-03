@@ -520,6 +520,58 @@ textarea::-webkit-scrollbar-thumb {
   background: #E0F7FA;
 }
 
+/* -----------------------------BOOK IMAGE MODAL------------------------------------------------------------- */
+#images-modal {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.images-modal-container {
+  background-color: var(--num-container);
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding: 30px;
+  border-radius: 10px;
+  animation: increase-scale 0.5s;
+  position: relative;
+}
+
+.img-modal-container {
+  width: 90px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.img-modal-container:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  right: 1px;
+  bottom: 1px;
+}
+
+.img-modal-container > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+#images-modal-close {
+  position: absolute;
+  right: 0;
+  top: -35px;
+}
+
 .num-container:hover,
 .completed-btn:hover,
 .book-img-container:hover,
@@ -529,7 +581,8 @@ textarea::-webkit-scrollbar-thumb {
 .delete-btn:hover,
 .close:hover,
 #edit-page-save:hover,
-.edit-page-close:hover {
+.edit-page-close:hover,
+#images-modal-close:hover {
   transform: translate(0px, 1px);
   cursor: pointer;
 }
@@ -542,6 +595,7 @@ textarea::-webkit-scrollbar-thumb {
 .edit-btn,
 .delete-btn,
 .close,
-#edit-page-save {
+#edit-page-save,
+#images-modal-close {
   transition: transform 0.2s;
 }
