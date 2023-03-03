@@ -347,7 +347,6 @@ function changeBookState(e) {
 }
 
 // TO DO
-// Border for complete
 // color palette
 // template images
 // Store 2 initial cards in Library Array
