@@ -429,7 +429,7 @@ bookTemplates.forEach((template) => {
   template.addEventListener('click', replaceBookTemplate);
 });
 
-displayBooks();
+// displayBooks();
 
 // TO DO
 // logo

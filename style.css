@@ -55,6 +55,11 @@ main {
   border-left: 10px solid var(--button-read);
 }
 
+.card-minimize {
+  height: 120px;
+  overflow: hidden;
+}
+
 .read-state {
   height: fit-content;
   margin-left: 85px;
@@ -63,6 +68,10 @@ main {
   row-gap: 20px;
   column-gap: 30px;
   letter-spacing: 1px;
+}
+
+.read-state-minimize {
+  row-gap: 0;
 }
 
 .read-state > p {
@@ -111,6 +120,10 @@ main {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
+.completed-btn-minimize {
+  display: none;
+}
+
 .book {
   margin-right: 70px;
   display: flex;
@@ -142,6 +155,10 @@ main {
   width: 250px;
 }
 
+.book-details-minimize {
+  align-self: center;
+}
+
 .title-card {
   font-size: 1.4rem;
   color: var(--text-main);
@@ -170,6 +187,10 @@ main {
 .details-card::-webkit-scrollbar-thumb {
   background-color: var(--background);
   border-radius: 10px;
+}
+
+.details-card-minimize {
+  display: none;
 }
 
 .delete-btn,
