@@ -1,5 +1,3 @@
-const myLibrary = [];
-
 function Book(title, author, pages, details, completed) {
   this.title = title;
   this.author = author;
@@ -33,7 +31,15 @@ Book.prototype.bookFinalState = function () {
 
 Book.prototype.bookCoverTemplate = 'images/4.jpg';
 
-let selectedIndex; // set to global for access to functions responsible for editing books.
+//  store 2 initial books in Array
+const initial1 = new Book('Game of Thrones', 'George R.R. Martin', '694', 'This book tells the tale of various clashing households and their quest to conquer control over the seven kingdoms. Set in a distant, but vaguely familiar medieval-Europe, the story bears parallels to England’s “War of the Roses,” while also introducing its share of unique fantasy elements. As the reader progresses through the book, they follow the politics of the Iron Throne- a metaphor representing the complete and utter control a King possesses in a feudal government system.', 'Re-read');
+const initial2 = new Book('Fifty Shades of #808080', 'Anonymous', '514', 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos necessitatibus vitae tenetur sapiente, minus impedit ipsam deleniti at cum cupiditate iste temporibus.', 'Completed');
+initial1.bookCoverTemplate = 'images/1.jpg';
+initial2.bookCoverTemplate = 'images/5.jpg';
+
+const myLibrary = [initial1, initial2];
+
+let selectedIndex; // set to global for access to functions in editing selected books.
 let formMode; // set to global for access whether form is for adding book or editing.
 
 function addBookToLibrary(book) {
@@ -423,6 +429,7 @@ bookTemplates.forEach((template) => {
   template.addEventListener('click', replaceBookTemplate);
 });
 
+displayBooks();
+
 // TO DO
-// Store 2 initial cards in Library Array
 // logo
