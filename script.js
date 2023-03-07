@@ -64,6 +64,7 @@ function displayBooks() {
     const containerCard = document.createElement('div');
     containerCard.setAttribute('class', 'card');
     containerCard.setAttribute('data-index', `${currentIndex}`);
+    containerCard.classList.add('card-minimize');
 
     if (currentBook.completed === 'Re-read') {
       containerCard.classList.toggle('card-complete');
@@ -73,6 +74,7 @@ function displayBooks() {
     const readStateSection = document.createElement('section');
     const bookSection = document.createElement('section');
     readStateSection.setAttribute('class', 'read-state');
+    readStateSection.classList.add('read-state-minimize');
     bookSection.setAttribute('class', 'book');
 
     //  --------read-state section children-----------
@@ -105,6 +107,7 @@ function displayBooks() {
     readBtn.setAttribute('class', 'completed-btn');
     readBtn.setAttribute('data-index', `${currentIndex}`);
     readBtn.textContent = currentBook.completed;
+    readBtn.classList.add('completed-btn-minimize');
 
     //  append read-state children
     readStateSection.appendChild(pagePara);
@@ -131,6 +134,7 @@ function displayBooks() {
     //  book details
     const bookDetails = document.createElement('div');
     bookDetails.setAttribute('class', 'book-details');
+    bookDetails.classList.add('book-details-minimize');
 
     const titlePara = document.createElement('p');
     titlePara.setAttribute('id', 'title-card');
@@ -145,6 +149,7 @@ function displayBooks() {
     const detailsPara = document.createElement('p');
     detailsPara.setAttribute('id', 'details-card');
     detailsPara.setAttribute('class', 'details-card');
+    detailsPara.classList.add('details-card-minimize');
     detailsPara.textContent = currentBook.details;
 
     bookDetails.appendChild(titlePara);
@@ -163,10 +168,10 @@ function displayBooks() {
     //  icons
     const rewriteIcons = `
     <div class="icon-container">
-        <button class="edit-btn" id="edit-btn" data-index="${currentIndex}">
+        <button class="edit-btn edit-minimize" id="edit-btn" data-index="${currentIndex}">
           <svg class="edit" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path    fill-rule="evenodd" clip-rule="evenodd" d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z" fill="var(--text-sub)"/></svg>
         </button>
-        <button class="delete-btn" id="delete-btn" data-index="${currentIndex}">
+        <button class="delete-btn delete-minimize" id="delete-btn" data-index="${currentIndex}">
           <svg class="delete" width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 12V17" stroke="var(--text-sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M14 12V17" stroke="var(--text-sub)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -206,6 +211,8 @@ function displayBooks() {
     bookTemplate.forEach((template) => {
       template.addEventListener('click', openBookTemplates);
     });
+
+    containerCard.addEventListener('click', toggleCard);
   });
 }
 
@@ -270,6 +277,7 @@ closeForm.addEventListener('click', () => {
 
 //  open form with values, edit book
 function openFormEdit(e) {
+  e.stopPropagation();
   selectedIndex = e.target.dataset.index;
 
   const titleInput = document.getElementById('title');
@@ -294,6 +302,7 @@ function openFormEdit(e) {
 
 //  delete book
 function deleteBook(e) {
+  e.stopPropagation();
   selectedIndex = e.target.dataset.index;
 
   myLibrary.splice(selectedIndex, 1);
@@ -303,6 +312,7 @@ function deleteBook(e) {
 //  edit current page
 const pageModal = document.querySelector('#page-modal');
 function editCurrentPage(e) {
+  e.stopPropagation();
   selectedIndex = e.target.dataset.index;
   const modalTotalPage = document.querySelector('.modal-page-total');
 
@@ -348,8 +358,9 @@ editPageSave.addEventListener('click', () => {
 
 //  change book state, complete/ongoing
 function changeBookState(e) {
+  e.stopPropagation();
+
   selectedIndex = e.target.dataset.index;
-  // console.log(myLibrary[selectedIndex].completed);
   if (myLibrary[selectedIndex].completed === 'Completed') {
     myLibrary[selectedIndex].completed = 'Re-read';
   } else {
@@ -405,6 +416,7 @@ themes.forEach((theme) => {
 //  open book images modal
 const imagesModal = document.getElementById('images-modal');
 function openBookTemplates(e) {
+  e.stopPropagation();
   imagesModal.style.display = 'flex';
   selectedIndex = e.target.dataset.index;
 }
@@ -429,7 +441,25 @@ bookTemplates.forEach((template) => {
   template.addEventListener('click', replaceBookTemplate);
 });
 
-// displayBooks();
+//  toggle resize card
+function toggleCard(e) {
+  e.stopPropagation();
 
-// TO DO
-// logo
+  const minimizeCard = this;
+  const minimizeDetails = this.querySelector('.details-card');
+  const minimizeBook = this.querySelector('.book-details');
+  const minimizeCompleteBtn = this.querySelector('.completed-btn');
+  const minimizeReadState = this.querySelector('.read-state');
+  const minimizeEdit = this.querySelector('.edit-btn');
+  const minimizeDelete = this.querySelector('.delete-btn');
+
+  minimizeCard.classList.toggle('card-minimize');
+  minimizeDetails.classList.toggle('details-card-minimize');
+  minimizeBook.classList.toggle('.book-details-minimize');
+  minimizeCompleteBtn.classList.toggle('completed-btn-minimize');
+  minimizeReadState.classList.toggle('read-state-minimize');
+  minimizeEdit.classList.toggle('edit-minimize');
+  minimizeDelete.classList.toggle('delete-minimize');
+}
+
+displayBooks();

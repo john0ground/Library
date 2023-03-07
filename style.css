@@ -214,6 +214,11 @@ main {
   margin-right: 10px;
 }
 
+.delete-minimize,
+.edit-minimize {
+  display: none;
+}
+
 /* --------ADD BOOK--------------------------------------------------------------------------------------------------------------------- */
 .add-book-btn {
   width: 180px;
