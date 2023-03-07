@@ -23,7 +23,8 @@ body {
   font-family: 'Overpass', sans-serif;
   display: flex;
   flex-direction: column;
-  /* height: 100vh; */
+  justify-content: space-between;
+  height: 100vh;
 }
 
 header {
@@ -626,6 +627,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-self: end;
 }
 
 a {
