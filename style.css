@@ -21,6 +21,9 @@
 body {
   background: var(--background);
   font-family: 'Overpass', sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
 }
 
 header {
@@ -30,6 +33,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.logo > * {
+  margin-right: 20px;
+}
+
+.logo h1 {
+  color: var(--text-main);
 }
 
 main {
@@ -49,6 +66,11 @@ main {
   align-items: center;
   border-radius: 10px;
   position: relative;
+  transition: height 0.5s;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .card-complete {
@@ -500,6 +522,7 @@ textarea::-webkit-scrollbar-thumb {
 /* ---------------------------THEME------------------------------------------ */
 .color-palette {
   display: flex;
+  margin-right: 30px;
 }
 
 .theme {
@@ -596,6 +619,31 @@ textarea::-webkit-scrollbar-thumb {
   position: absolute;
   right: 0;
   top: -35px;
+}
+
+footer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-sub);
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+a > * {
+  display: inline;
+}
+
+a > p {
+  margin-left: 10px;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .num-container:hover,
