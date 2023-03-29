@@ -1,9 +1,11 @@
-function Book(title, author, pages, details, completed) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.details = details;
-  this.completed = completed;
+class Book {
+  constructor(title, author, pages, details, completed) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.details = details;
+    this.completed = completed;
+  }
 }
 
 Book.prototype.currentPage = '0 / ';
